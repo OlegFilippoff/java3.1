@@ -7,12 +7,28 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioEcuTest {
 
 
+    @Test
+    void shouldInitMax() {
+        RadioEcu radioEcu = new RadioEcu(12);
+        int expected = radioEcu.getMaxRadioStationNumber();
+        int actual = 11;
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void shouldInitMaxNoArgs() {
+        RadioEcu radioEcu = new RadioEcu();
+        int expected = radioEcu.getMaxRadioStationNumber();
+        int actual = 9;
+        assertEquals(expected, actual);
+    }
+
 
     @Test
     void getCurrentRadioStationLessLowLimitTest() {
         RadioEcu radioEcu = new RadioEcu();
         radioEcu.setCurrentRadioStation(-1);
-        int expected = 9;
+        int expected = radioEcu.getMaxRadioStationNumber();
         int actual = radioEcu.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -29,7 +45,7 @@ class RadioEcuTest {
     void getCurrentRadioStationUpperLimitTest() {
         RadioEcu radioEcu = new RadioEcu();
         radioEcu.setCurrentRadioStation(9);
-        int expected = 9;
+        int expected = radioEcu.getMaxRadioStationNumber();
         int actual = radioEcu.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -67,7 +83,7 @@ class RadioEcuTest {
         RadioEcu radioEcu = new RadioEcu();
         radioEcu.setCurrentRadioStation(0);
         radioEcu.setPreviousCurrentRadioStation();
-        int expected = 9;
+        int expected = radioEcu.getMaxRadioStationNumber();
         int actual = radioEcu.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -103,8 +119,8 @@ class RadioEcuTest {
     @Test
     void setCurrentVolumeUpperLimit() {
         RadioEcu radioEcu = new RadioEcu();
-        radioEcu.setCurrentVolume(10);
-        int expected = 10;
+        radioEcu.setCurrentVolume(100);
+        int expected = 100;
         int actual = radioEcu.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -151,9 +167,9 @@ class RadioEcuTest {
     @Test
     void setVolumeUpUpperLimit() {
         RadioEcu radioEcu = new RadioEcu();
-        radioEcu.setCurrentVolume(9);
+        radioEcu.setCurrentVolume(99);
         radioEcu.setVolumeUp();
-        int expected = 10;
+        int expected = 100;
         int actual = radioEcu.getCurrentVolume();
         assertEquals(expected, actual);
     }
@@ -161,9 +177,9 @@ class RadioEcuTest {
     @Test
     void setVolumeUpMoreLimit() {
         RadioEcu radioEcu = new RadioEcu();
-        radioEcu.setCurrentVolume(10);
+        radioEcu.setCurrentVolume(101);
         radioEcu.setVolumeUp();
-        int expected = 10;
+        int expected = 1;
         int actual = radioEcu.getCurrentVolume();
         assertEquals(expected, actual);
     }
