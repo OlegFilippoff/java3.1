@@ -1,32 +1,22 @@
 package ru.netology.domain;
 
-public class RadioEcu {
 
+import lombok.*;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+@Generated
+public class RadioEcu {
+    @Getter(AccessLevel.NONE)
+    @Setter(AccessLevel.NONE)
     private int maxRadioStations = 10;
     private int currentVolume;
     private int currentRadioStation;
 
-    public int getCurrentVolume() {
-
-        return currentVolume;
-    }
-
-    public int getCurrentRadioStation() {
-        return currentRadioStation;
-    }
-
-    public int getMaxRadioStationNumber() {
+    public int getMaxRadioStations() {
         return maxRadioStations - 1;
     }
-
-
-    public RadioEcu() {
-    }
-
-    public RadioEcu(int maxRadioStations) {
-        this.maxRadioStations = maxRadioStations;
-    }
-
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation < 0) {
@@ -38,6 +28,7 @@ public class RadioEcu {
         this.currentRadioStation = currentRadioStation;
     }
 
+
     public void setPreviousCurrentRadioStation() {
         setCurrentRadioStation(currentRadioStation - 1);
     }
@@ -45,7 +36,6 @@ public class RadioEcu {
     public void setNextRadioStation() {
         setCurrentRadioStation(currentRadioStation + 1);
     }
-
 
     public void setCurrentVolume(int currentVolume) {
         if (currentVolume > 100) {
@@ -65,4 +55,5 @@ public class RadioEcu {
     public void setVolumeUp() {
         setCurrentVolume(currentVolume + 1);
     }
+
 }
