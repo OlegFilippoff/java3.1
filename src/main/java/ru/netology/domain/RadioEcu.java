@@ -6,6 +6,7 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@Generated
 public class RadioEcu {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
