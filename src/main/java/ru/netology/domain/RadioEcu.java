@@ -2,6 +2,7 @@ package ru.netology.domain;
 
 public class RadioEcu {
 
+    private int maxRadioStations = 10;
     private int currentVolume;
     private int currentRadioStation;
 
@@ -14,12 +15,24 @@ public class RadioEcu {
         return currentRadioStation;
     }
 
+    public int getMaxRadioStationNumber() {
+        return maxRadioStations - 1;
+    }
+
+
+    public RadioEcu() {
+    }
+
+    public RadioEcu(int maxRadioStations) {
+        this.maxRadioStations = maxRadioStations;
+    }
+
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation < 0) {
-            currentRadioStation = 9;
+            currentRadioStation = maxRadioStations - 1;
         }
-        if (currentRadioStation > 9) {
+        if (currentRadioStation > maxRadioStations - 1) {
             currentRadioStation = 0;
         }
         this.currentRadioStation = currentRadioStation;
@@ -29,13 +42,13 @@ public class RadioEcu {
         setCurrentRadioStation(currentRadioStation - 1);
     }
 
-
     public void setNextRadioStation() {
         setCurrentRadioStation(currentRadioStation + 1);
     }
 
+
     public void setCurrentVolume(int currentVolume) {
-        if (currentVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
         if (currentVolume < 0) {
