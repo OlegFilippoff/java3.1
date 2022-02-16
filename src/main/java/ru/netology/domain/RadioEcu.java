@@ -6,6 +6,14 @@ public class RadioEcu {
     private int currentVolume;
     private int currentRadioStation;
 
+    public RadioEcu() {
+    }
+
+    public RadioEcu(int currentRadioStation) {
+        this.currentRadioStation = currentRadioStation;
+    }
+
+
     public int getCurrentVolume() {
 
         return currentVolume;
@@ -15,18 +23,13 @@ public class RadioEcu {
         return currentRadioStation;
     }
 
+    public int setMaxRadioStation(int maxRadioStations) {this.maxRadioStations = maxRadioStations;
+        return maxRadioStations;
+    }
+
     public int getMaxRadioStationNumber() {
         return maxRadioStations - 1;
     }
-
-
-    public RadioEcu() {
-    }
-
-    public RadioEcu(int maxRadioStations) {
-        this.maxRadioStations = maxRadioStations;
-    }
-
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation < 0) {
