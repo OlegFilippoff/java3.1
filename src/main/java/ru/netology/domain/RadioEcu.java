@@ -5,6 +5,11 @@ public class RadioEcu {
     private int currentVolume;
     private int currentRadioStation;
 
+    public RadioEcu() {
+    }
+    public RadioEcu(int currentVolume, int currentRadioStation) {
+    }
+
     public int getCurrentVolume() {
 
         return currentVolume;
