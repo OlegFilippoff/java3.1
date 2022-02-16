@@ -13,6 +13,9 @@ public class RadioEcu {
         this.currentRadioStation = currentRadioStation;
     }
 
+    public RadioEcu(int maxRadioStations, int currentRadioStation, int currentVolume) {
+    }
+
 
     public int getCurrentVolume() {
 
