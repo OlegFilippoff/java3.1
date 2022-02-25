@@ -10,8 +10,7 @@ class RadioEcuTest {
     @Test
     void shouldInitMax() {
         RadioEcu radio2 = new RadioEcu(7);
-        radio2.setMaxRadioStation(6);
-        assertEquals(5, radio2.getMaxRadioStationNumber());
+        assertEquals(6, radio2.getMaxRadioStationNumber());
     }
 
     @Test
@@ -59,9 +58,9 @@ class RadioEcuTest {
     @Test
     void getCurrentRadioStationUpperLimitArgsConstTest () {
         RadioEcu radio2 = new RadioEcu(21);
-        radio2.setMaxRadioStation(20);
-        int expected = 0;
+        radio2.setCurrentRadioStation(20);
         radio2.setNextRadioStation();
+        int expected = 0;
         int actual = radio2.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -79,7 +78,8 @@ class RadioEcuTest {
     void getCurrentRadioStationMoreUpperLimitArgsConstTest () {
         RadioEcu radio2 = new RadioEcu(20);
         radio2.setCurrentRadioStation(20);
-        int expected = 0;
+        radio2.setNextRadioStation();
+        int expected = 1;
         int actual = radio2.getCurrentRadioStation();
         assertEquals(expected, actual);
     }
@@ -145,7 +145,7 @@ class RadioEcuTest {
     @Test
     void setNextRadioStationUpperLimitArgsConstTest () {
         RadioEcu radio2 = new RadioEcu(64);
-        radio2.setMaxRadioStation(65);
+        radio2.setCurrentRadioStation(63);
         radio2.setNextRadioStation();
         int expected = 0;
         int actual = radio2.getCurrentRadioStation();
