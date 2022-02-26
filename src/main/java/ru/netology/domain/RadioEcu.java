@@ -10,20 +10,23 @@ import lombok.*;
 public class RadioEcu {
     @Getter(AccessLevel.NONE)
     @Setter(AccessLevel.NONE)
-    private int maxRadioStations = 10;
+    private int maxRadioStationsQuantity = 10;
     private int currentVolume;
     private int currentRadioStation;
 
     public int getMaxRadioStations() {
-        return maxRadioStations - 1;
+        return maxRadioStationsQuantity - 1;
     }
 
     public void setCurrentRadioStation(int currentRadioStation) {
         if (currentRadioStation < 0) {
-            currentRadioStation = maxRadioStations - 1;
+            this.currentRadioStation = getMaxRadioStations();
+            return;
         }
-        if (currentRadioStation > maxRadioStations - 1) {
-            currentRadioStation = 0;
+
+        if (currentRadioStation > maxRadioStationsQuantity - 1) {
+            this.currentRadioStation = 0;
+            return;
         }
         this.currentRadioStation = currentRadioStation;
     }
